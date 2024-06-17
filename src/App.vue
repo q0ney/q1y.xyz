@@ -17,4 +17,17 @@ import { RouterLink, RouterView } from 'vue-router'
   font-size: 16px;
   line-height: 1.5;
  }
+
+ html {
+  scroll-behavior: smooth;
+ }
+
+ ::-webkit-scrollbar {
+  width: 10px;
+  background-color: #1c1c1c;
+ }
+
+ ::-webkit-scrollbar-thumb {
+  background: #303030;
+}
 </style>
