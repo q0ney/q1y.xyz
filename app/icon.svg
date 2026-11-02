@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>qoney</title>
+  <rect width="64" height="64" rx="15" fill="#080a0d"/>
+  <path d="M43 31a13 13 0 1 1-26 0 13 13 0 0 1 26 0Z" stroke="#e9edf1" stroke-width="7"/>
+  <path d="M43 20v23" stroke="#e9edf1" stroke-width="7"/>
+  <path d="M43 43v10" stroke="#9ed8ff" stroke-width="7"/>
+</svg>
