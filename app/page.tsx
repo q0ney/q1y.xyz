@@ -1,69 +1,38 @@
-import Image from "next/image";
+import CopyEmail from './copy-email';
+import ProjectDetails from './components/project-details';
+import HeroLight from './components/hero-light';
+import BlurText from './components/react-bits/BlurText';
+import Magnet from './components/react-bits/Magnet';
+import AnimatedContent from './components/react-bits/AnimatedContent';
+
+const stages = [['01', '+', 'An idea', 'Define what you need'], ['02', '⌘', 'AI-assisted development', 'Turn intent into an application'], ['03', '▧', 'Preview & review', 'Check before publishing'], ['04', '↗', 'Deployment', 'Bring it to the team']];
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <>
+    <a className="skip" href="#main">Skip to content</a>
+    <header className="wrap header"><a className="wordmark" href="#" aria-label="qoney home">qoney<span>_</span></a><nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact <span aria-hidden="true">↗</span></a></nav></header>
+    <HeroLight />
+    <main id="main">
+      <section className="hero wrap" aria-labelledby="hero-title">
+
+        <div className="hero-copy"><p className="eyebrow">FULLSTACK DEVELOPER</p><h1 id="hero-title"><BlurText text="qoney" className="name-reveal" animateBy="letters" direction="bottom" trigger="load" delay={75} stepDuration={0.3} blur={12} distance={16} /><span className="name-dot">.</span></h1><p className="hero-description">I build applications<br/>and the systems <em>behind them.</em></p><a className="text-link" href="#work">Explore selected work <span aria-hidden="true">↓</span></a></div>
+      </section>
+      <section id="work" className="work wrap section" aria-labelledby="work-title">
+        <div className="section-heading"><h2 id="work-title">Built from the ground up<span>.</span></h2></div>
+        <article id="featured-project" className="project"><div className="project-info"><h3>Internal App<br/>Platform</h3><p>A path from an idea to a deployed application. Built for non-technical teams working with AI.</p><div className="tags"><span>TypeScript</span><span>React</span><span>Cloudflare</span><span>Hono</span></div><div className="project-role"><span className="mono">MY ROLE</span><span>End-to-end design & development</span></div></div>
+          <div className="diagram" aria-label="Conceptual workflow from idea to deployment"><ol className="flow">{stages.map(([number, icon, title, description]) => <li key={number} className="flow-step"><AnimatedContent className={`flow-node ${number === '02' ? 'active' : ''}`} distance={22} duration={0.65} delay={(Number(number) - 1) * 0.13} blur={3} threshold={0.15}><span className="node-icon" aria-hidden="true">{icon}</span><div><small>STEP {number}</small><strong>{title}</strong><p>{description}</p></div><span className="node-tick" aria-hidden="true">{number === '02' ? '◉' : '+'}</span></AnimatedContent></li>)}</ol></div>
+          <ProjectDetails><div className="detail-grid"><div><h4>The problem</h4><p>Building with AI is only part of the process. Teams also need a consistent way to start, preview, publish and manage their applications.</p></div><div><h4>The system</h4><p>An application starter, AI tooling integration, a publishing panel and a deployment workflow, connected through shared access controls.</p></div><div><h4>My contribution</h4><p>I designed and implemented the complete platform, from the application interface to the services and tooling behind it.</p></div></div><p className="privacy-note mono">An anonymized overview. Source code and company details are private.</p></ProjectDetails>
+        </article>
+      </section>
+      <section id="about" className="about wrap section" aria-labelledby="about-title"><div className="about-content"><h2 id="about-title">The whole picture.<br/><span>Down to the details.</span></h2><div className="about-columns"><p>I'm qoney, a fullstack developer. I work across interfaces, APIs and infrastructure — connecting the pieces that turn an application into a working system.</p><p>My work includes internal tools, AI-assisted workflows and deployment platforms, from the first idea through to the implementation.</p></div><div className="stack-line"><span className="mono">WORKING WITH</span><ul className="stack-list" aria-label="Technologies I work with">{['TypeScript', 'React', 'Next.js', 'Node.js', 'NestJS', 'Hono', 'Tailwind CSS', 'AWS', 'Cloudflare Workers', 'D1', 'MCP'].map(technology => <li key={technology}>{technology}</li>)}</ul></div></div></section>
+      <section id="contact" className="contact wrap section" aria-labelledby="contact-title"><h2 id="contact-title">Have something<br/>in mind<span>?</span></h2><div className="contact-bottom"><Magnet padding={35} magnetStrength={5} maxOffset={9}><a className="email" href="mailto:qoney@pm.me">qoney@pm.me <span aria-hidden="true">↗</span></a></Magnet><CopyEmail/><Magnet wrapperClassName="github-magnet" padding={35} magnetStrength={4} maxOffset={10}><a className="github" href="https://github.com/q0ney" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></Magnet></div></section>
+    </main>
+    <footer className="footer wrap mono"><a href="#" className="wordmark">qoney<span>_</span></a><a href="#">BACK TO TOP ↑</a></footer>
+  </>;
 }
+
+
+
+
+
+

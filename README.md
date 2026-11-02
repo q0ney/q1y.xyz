@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# qoney / q1y.xyz
 
-## Getting Started
+Personal portfolio built with Next.js and React Bits. Static export for GitHub Pages.
 
-First, run the development server:
+## Local development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Node.js 24; run `npm ci`, then `npm run dev`.
+`npm run build` generates the complete static site in `out/`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## GitHub Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The repository root is this directory (not its parent).
+In repository Settings > Pages, choose **GitHub Actions** as the build source.
+Set **Custom domain** to `q1y.xyz`. The CNAME file alone does not configure
+custom domains for an Actions deployment. Enable **Enforce HTTPS** once GitHub
+has issued the certificate. Pushes to master/main run `.github/workflows/pages.yml`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Namecheap DNS
 
-## Learn More
+If using Namecheap BasicDNS, PremiumDNS or FreeDNS, open Domain List > q1y.xyz >
+Manage > Advanced DNS. Configure these Host Records with Automatic TTL:
 
-To learn more about Next.js, take a look at the following resources:
+| Type | Host | Value |
+| --- | --- | --- |
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | q0ney.github.io |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Replace conflicting parking/redirect records for @ and www. Preserve unrelated
+MX/TXT records and other subdomains. If using custom nameservers, configure these
+records at the authoritative DNS provider instead.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sources:
+- https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+- https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages/
 
-## Deploy on Vercel
+## Third-party components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+React Bits components and their license are in `app/components/react-bits/`.
+Project descriptions are anonymized; no employer source code is included.
